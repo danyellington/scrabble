@@ -5,38 +5,60 @@ import java.util.HashMap;
 import java.io.IOException;
 
 public class Scrabble {
-    private static Character[] letterKeys = new Character[] { 'A', 'B', 'C', 'D',
-                                                    'E', 'F', 'G', 'H',
-                                                    'I', 'J', 'K', 'L',
-                                                    'M', 'N', 'O', 'P',
-                                                    'Q', 'R', 'S', 'T',
-                                                    'U', 'V', 'W', 'X',
-                                                    'Y', 'Z' };
+    private static String[] letterKeys = new String[] { "A", "B", "C", "D",
+                                                    "E", "F", "G", "H",
+                                                    "I", "J", "K", "L",
+                                                    "M", "N", "O", "P",
+                                                    "Q", "R", "S", "T",
+                                                    "U", "V", "W", "X",
+                                                    "Y", "Z" };
 
-    public Integer calculateScore(Character letter) {
-        Map<Character, Integer> lettersAndValues = new HashMap<>();
 
-        // Pair Keys with their respective Values and put them in the HashMap
-        for (char eachLetter : letterKeys) {
-            if (eachLetter == 'A' || eachLetter == 'E' || eachLetter == 'I' || eachLetter == 'O' || eachLetter =='U' || eachLetter == 'L' || eachLetter == 'N' || eachLetter == 'R' || eachLetter == 'S' || eachLetter == 'T')  {
-                lettersAndValues.put(eachLetter, 1);
-            } else if (eachLetter == 'D' || eachLetter == 'G') {
-                lettersAndValues.put(eachLetter, 2);
-            } else if (eachLetter == 'B' || eachLetter == 'C' || eachLetter == 'M' || eachLetter == 'P') {
-                lettersAndValues.put(eachLetter, 3);
-            } else if (eachLetter == 'F' || eachLetter == 'H' || eachLetter == 'V' || eachLetter == 'W' || eachLetter == 'Y') {
-                lettersAndValues.put(eachLetter, 4);
-            } else if (eachLetter == 'K') {
-                lettersAndValues.put(eachLetter, 5);
-            } else if (eachLetter == 'J' || eachLetter == 'X') {
-                lettersAndValues.put(eachLetter, 8);
-            } else if (eachLetter == 'Q' || eachLetter == 'Z') {
-                lettersAndValues.put(eachLetter, 10);
+    public Integer calculateScore(String word) {
+        Map<String, Integer> lettersAndValues = new HashMap<>();
+
+        char[] charArray = word.toUpperCase().toCharArray();
+        int score = 0;
+
+        for (char letter : charArray) {
+            if (letter == 'A' || letter == 'E' || letter == 'I' || letter == 'O' || letter == 'U' || letter == 'L' || letter == 'N' || letter == 'R' || letter == 'S' || letter == 'T') {
+                score += 1;
+            } else if (letter == 'D' || letter == 'G') {
+                score += 2;
+            } else if (letter == 'B' || letter == 'C' || letter == 'M' || letter == 'P') {
+                score += 3;
+            } else if (letter == 'F' || letter == 'H' || letter == 'V' || letter == 'W' || letter == 'Y') {
+                score += 4;
+            } else if (letter == 'K') {
+                score += 5;
+            } else if (letter == 'J' || letter == 'X') {
+                score += 8;
+            } else if (letter == 'Q' || letter == 'Z') {
+                score += 10;
             }
         }
 
+        // Pair Keys with their respective Values and put them in the HashMap
+//        for (String eachLetter : letterKeys) {
+//            if (eachLetter.equals("A") || eachLetter.equals ("E") || eachLetter.equals ("I") || eachLetter .equals ("O") || eachLetter .equals("U") || eachLetter .equals ("L") || eachLetter .equals ("N") || eachLetter .equals ("R") || eachLetter .equals ("S") || eachLetter .equals ("T"))  {
+//                lettersAndValues.put(eachLetter, 1);
+//            } else if (eachLetter .equals ("D") || eachLetter .equals ("G")) {
+//                lettersAndValues.put(eachLetter, 2);
+//            } else if (eachLetter .equals ("B") || eachLetter .equals ("C") || eachLetter .equals ("M") || eachLetter .equals ("P")) {
+//                lettersAndValues.put(eachLetter, 3);
+//            } else if (eachLetter .equals ("F") || eachLetter .equals ("H") || eachLetter .equals ("V") || eachLetter .equals ("W") || eachLetter .equals ("Y")) {
+//                lettersAndValues.put(eachLetter, 4);
+//            } else if (eachLetter .equals ("K")) {
+//                lettersAndValues.put(eachLetter, 5);
+//            } else if (eachLetter .equals ("J") || eachLetter .equals ("X")) {
+//                lettersAndValues.put(eachLetter, 8);
+//            } else if (eachLetter .equals ("Q") || eachLetter .equals ("Z")) {
+//                lettersAndValues.put(eachLetter, 10);
+//            }
+//        }
+
         // Character.toUpperCase(letter) Capitalizes
-        return lettersAndValues.get(Character.toUpperCase(letter));
+        return score;
     }
 
 }

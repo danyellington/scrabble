@@ -10,7 +10,14 @@ public class ScrabbleTest {
     @Test
     public void calculateScore_returnsScoreForSingleLetter_1() throws Exception {
         Scrabble testScrabble = new Scrabble();
-        Integer expected = 1;
-        assertEquals(expected, testScrabble.calculateScore('a'));
+        Integer expected = 10;
+        assertEquals(expected, testScrabble.calculateScore("z"));
+    }
+
+    @Test
+    public void calculateScore_returnsScoreForSingleWord_int() throws Exception{
+        Scrabble testScrabble = new Scrabble();
+        Integer expected = 14;
+        assertEquals(expected, testScrabble.calculateScore("scrabble"));
     }
 }
